@@ -14,6 +14,15 @@ import os
 
 from m3_feature_extractor import extract_m3_features
 
+import sys
+import os
+
+# Add M3 folder to path for cloud compatibility
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+M3_PATH = os.path.abspath(os.path.join(BASE_DIR, "M3"))
+if M3_PATH not in sys.path:
+    sys.path.append(M3_PATH)
+
 st.set_page_config(layout="wide")
 
 

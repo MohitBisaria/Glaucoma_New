@@ -10,10 +10,18 @@ from M3.M3_feature_zone.retipy.zone_feature_extractor import (
 
 import sys
 import os
+import zipfile
 
-# Dynamically add M3 folder path (works on Streamlit Cloud and local)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-M3_PATH = os.path.abspath(os.path.join(BASE_DIR, "M3"))
+M3_PATH = os.path.join(BASE_DIR, "M3")
+M3_ZIP_PATH = os.path.join(BASE_DIR, "M3.zip")
+
+# If M3 folder doesn't exist but zip exists → unzip it
+if not os.path.exists(M3_PATH) and os.path.exists(M3_ZIP_PATH):
+    with zipfile.ZipFile(M3_ZIP_PATH, 'r') as zip_ref:
+        zip_ref.extractall(BASE_DIR)
+
+# Add M3 folder to Python path
 if M3_PATH not in sys.path:
     sys.path.append(M3_PATH)
 

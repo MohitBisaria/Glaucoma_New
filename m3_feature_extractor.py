@@ -8,6 +8,14 @@ from M3.M3_feature_zone.retipy.zone_feature_extractor import (
     compute_vessel_metrics,
 )
 
+import sys
+import os
+
+# Dynamically add M3 folder path (works on Streamlit Cloud and local)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+M3_PATH = os.path.abspath(os.path.join(BASE_DIR, "M3"))
+if M3_PATH not in sys.path:
+    sys.path.append(M3_PATH)
 
 def extract_m3_features(image_array: np.ndarray) -> pd.DataFrame:
     """

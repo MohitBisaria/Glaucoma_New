@@ -14,3 +14,4 @@ fpdf2
 kaleido
 scikit-image
 matplotlib
+xgboost

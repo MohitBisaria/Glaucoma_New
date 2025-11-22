@@ -79,7 +79,7 @@ def create_report_pdf(patient_info, original_img, overlay_img, metrics_df, metri
         pdf.cell(60, 6, str(col), border=1)
         pdf.cell(0, 6, str(val), border=1, ln=True)
 
-    return pdf.output(dest="S").encode("latin1")
+    return return pdf.output(dest="S")
 
 
 # --------------- User Authentication ------------------
